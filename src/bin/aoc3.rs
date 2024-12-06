@@ -9,6 +9,50 @@ fn get_number( string: &str ) -> Option<(i64,usize)> {
     None
 }
 
+fn pars3(input:  &str, tokens: Vec<(i64, Box<dyn Fn(char) -> bool>)>) -> Option<Vec<String>> {
+
+    return Some(Vec::new());
+}
+
+fn parse(input:  &str, tokens: &Vec<(i64, Box<dyn Fn(char) -> bool>)>) -> Option<Vec<String>> {
+    let mut cc = input.chars();
+    let result: Vec<String> = Vec::new();
+    for token in tokens {
+        let len_w = cc.clone().position( |c|!token.1(c) );
+        if let Some(len) = len_w {
+            if len == 0 || len > token.0 as usize {
+                return None;
+            }
+            let g = cc.take( len ).collect();
+        } else {
+            return None;
+        }
+
+    }
+    Some(result)
+}
+
+fn run_program2( input: String, enablers: bool ) -> i64 {
+    let mut total = 0;
+    let mut pos = 0;
+    let mut enable = true;
+    let mut src = &input[..];
+
+    while src.len() >= 4 {
+        if src.starts_with("do()") {
+            enable = true;
+        } else if src.starts_with("don't()" ) && enablers == true {
+            enable = false;
+        } else if src.starts_with( "mul(" ) {
+            let okens = pars3( &src[4..], |x|x.is_ascii_digit());
+            let tokens = parse( &src[4..], [(100,|x|x.is_ascii_digit() ), (1,|x|x==','), (100,|x|x.is_ascii_digit() ),(1,|x|x==')') ]);
+        }
+        src = src.get(1..).unwrap();
+    }
+
+    return 0;
+
+}
 
 fn run_program( input: String, enablers: bool ) -> i64 {
     let mut total = 0;
