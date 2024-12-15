@@ -85,7 +85,7 @@ fn main() {
         let side_info = region_fence_depths.get(&plant).unwrap();
         let mut sides = 0;
         for side in side_info {
-            for (_depth, positions) in side {
+            for (_etdepth, positions) in side {
                 // each group of coniguous blocks is one side
                 let mut ordered = positions.clone();
                 ordered.sort();
