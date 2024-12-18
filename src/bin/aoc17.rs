@@ -78,6 +78,7 @@ fn get_regiater( line: &str) -> u64 {
 
 // Constructs the list of tokens backwards. At each point there could be more than one token that
 // satisfies the current need but may not be compatible with tokens  further up. Search all potentials at each step
+// Only definitely works for my input program
 fn find_slution( curr_a: u64, program_tokens: &Vec<u64>, required: &[u64] ) -> Option<u64> {
     if required.len() == 0 {
         return Some(curr_a);
