@@ -8,12 +8,6 @@ fn step( secret: u64 ) -> u64 {
     step3
 }
 
-// fn seq_to_idx( a: i32,b: i32,c: i32,d: i32) -> u32 {
-//         (a as u32 +10)*20*20*20+
-//         (b as u32 +10)*20*20 +
-//         (c as u32 +10)*20 +
-//         (d as u32 +10)
-// }
 fn get_seq_values( mut secret: u64 ) -> HashMap<(i32,i32,i32,i32), i32> {
     let mut digits = vec! [ 0i32;2000];
     let mut deltas = vec! [ 0i32;2000];
@@ -37,14 +31,6 @@ fn get_seq_values( mut secret: u64 ) -> HashMap<(i32,i32,i32,i32), i32> {
 
 fn main() {
     let input = fs::read_to_string( "inputs/aoc22").unwrap();
-//    let input = fs::read_to_string( "inputs/test2").unwrap();
-
-    // let mut s = 123;
-    // for t in 0..10 {
-    //     println!("{s}" );
-    //     s = step( s );
-    //
-    // }
     let mut total = 0;
     for line in input.lines() {
         let mut value = line.parse::<u64>().unwrap();
@@ -82,5 +68,4 @@ fn main() {
         }
     }
     println!( "Part2: {best}");
-
 }
