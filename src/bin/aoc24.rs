@@ -144,9 +144,6 @@ fn main() {
         let dest = parts.next().unwrap().to_string();
         code_ops.push( Operation{ src1, src2, dest, op});
     }
-    println!( "{}", states.len());
-    println!( "{}", code_ops.len());
-
 
     states = execute( states, code_ops.clone());
     let mut result = 0u64;
